@@ -1,0 +1,26 @@
+{
+  "author": "Edwin Cheng<edwin0cheng@gmail.com>",
+  "name": "syntax-node-toy",
+  "version": "0.0.1",
+  "repository": "https://github.com/rustwasm/rust-parcel-template",
+  "license": "Apache-2.0/MIT",
+  "scripts": {
+    "start-frontend": "parcel index.html",
+    "frontend": "parcel build ./index.html",
+    "server": "parcel build ./index.html && node index.js",
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "babel-preset-es2015": "^6.24.1",
+    "parcel-bundler": "^1.12.3",
+    "parcel-plugin-wasm.rs": "^1.2.9"
+  },
+  "dependencies": {
+    "bottleneck": "^2.18.0",
+    "chokidar": "^3.0.0",
+    "codemirror": "^5.46.0",
+    "css": "^2.2.4",
+    "express": "^4.17"
+  }
+}

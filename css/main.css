@@ -1,0 +1,43 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+
+body, html {
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}  
+
+h1 {
+    display: inline-block
+}
+
+div {
+    margin: 0;
+}
+
+#main-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#header {
+    margin: 1em;
+}
+
+#main-code {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+#main-code>div {
+    width: 50%;
+}
+
+.CodeMirror {
+    height: 100%;
+}
