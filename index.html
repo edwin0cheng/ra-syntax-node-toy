@@ -2,29 +2,83 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Rust-Analyzer Syntax Node Toy</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="js/index.js"></script>
 </head>
 
 <body>
-    <div id="main-container">
-        <div id="header">
-            <h1> Rust-Analyzer Syntax Node Toy</h1>
-        </div>
-        <div id="main-code">
-            <div>
-                <textarea id="code" name="code">
+    <div class="container full-height">
+        <section class="section">
+            <h1 class="title">Rust Macro & Syntax Node Toy (pre-alpha)</h1>
+            <h2 class="sub-title"><b>This is just a toy.</b> For proper testing, please go to <a
+                    href="https://play.rust-lang.org/">Rust-Playground</a></h2>
+        </section>
+        <section class="section main">
+            <div class="container full-height">
+                <div class="columns full-height">
+                    <div class="column is-half code-container">
+                        <textarea id="code" name="code">
+macro_rules! count_exprs {
+    () => { 0 };
+    ($e:expr) => { 1 };
+    ($e:expr, $($es:expr),+) => { 1 + count_exprs!($($es),*) };
+}
+
 /// Comment
 fn main() {
-    println!("Hello World");
-}
+    count_exprs!(1, 2, 3);
+}                                
 </textarea>
+                    </div>
+                    <div class="column side-panel is-half  code-container">
+                        <div class="tabs tool-tabs is-toggle is-fullwidth">
+                            <ul>
+                                <li data-tab="syntax-node-tab">
+                                    <a>
+                                        <span class="icon is-small"><i class="fas fa-code"
+                                                aria-hidden="true"></i></span>
+                                        <span>Syntax Nodes</span>
+                                    </a>
+                                </li>
+                                <li class="is-active" data-tab="mbe-tab">
+                                    <a>
+                                        <span class="icon is-small"><i class="fas fa-exclamation-circle"
+                                                aria-hidden="true"></i></span>
+                                        <span>Macros</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tool-tab code-tab" id="syntax-node-tab">
+                            <textarea id="syntax-tree" name="syntax_tree"></textarea>
+                        </div>
+                        <div class="tool-tab" id="mbe-tab">
+                            <div class="level">
+                                <div class="level-left"></div>
+                                <div class="level-right">
+                                    <div class="level-item">
+                                        <div class="field">
+                                            <p class="control">
+                                                <label class="checkbox level-item is-inline">
+                                                    <input type="checkbox" id="macro-recursive" checked>
+                                                    Recursive
+                                                </label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="mbe-tab-content">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <textarea id="syntax_tree" name="syntax_tree"></textarea>
-            </div>
-        </div>
+        </section>
     </div>
 </body>
 

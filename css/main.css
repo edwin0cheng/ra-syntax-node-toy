@@ -4,40 +4,54 @@ body, html {
     box-sizing: border-box;
     height: 100%;
     margin: 0;
+    background-color: #eee;
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
-}  
-
-h1 {
-    display: inline-block
+.section ~ .section {
+    padding-top: 0px;
 }
 
-div {
-    margin: 0;
-}
-
-#main-container {
-    height: 100%;
+body > .container {
     display: flex;
     flex-direction: column;
 }
 
-#header {
-    margin: 1em;
+.main {
+    flex-grow: 1;
 }
 
-#main-code {
-    flex: 1 0 auto;
+.full-height {
+    height: 100%;
+}
+
+.side-panel .CodeMirror {
+    width: 100%;
+}
+
+.code-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
-#main-code>div {
-    width: 50%;
+.tool-tab {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;    
+}
+
+.tabs {
+    flex-shrink: 0;
 }
 
 .CodeMirror {
-    height: 100%;
+    flex-grow: 1;
 }
+
+
+
+#mbe-tab-content {
+    overflow-y: scroll;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
